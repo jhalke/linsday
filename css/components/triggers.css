@@ -1,0 +1,70 @@
+.triggers {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin: -15px;
+  margin-top: 150px;
+}
+
+.trigger {
+  width: calc(25% - 35px);
+  margin: 15px;
+}
+
+.trigger__title {
+  font-family: 'Montserrat';
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 1;
+  text-transform: uppercase;
+  color: #000;
+  margin-bottom: 10px;
+  letter-spacing: 0.05em;
+}
+
+.trigger__description {
+  font-family: 'Montserrat';
+  font-size: 16px;
+  line-height: 24px;
+  color: #000;
+  opacity: .7;
+}
+
+@media screen and (max-width: 1600px) {
+  .triggers {
+    margin: -35px;
+    margin-top: 110px;
+  }
+
+  .trigger {
+    width: calc(33% - 70px);
+    margin: 35px;
+  }
+}
+
+@media screen and (max-width: 1195px) {
+  .trigger {
+
+  }
+  .triggers {
+    margin-top: 60px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .triggers {
+    margin: 60px auto 0;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+
+  .trigger {
+    width: 100%;
+    margin: 0;
+    margin-bottom: 40px;
+  }
+  .trigger__description {
+    font-size: 14px;
+  }
+}

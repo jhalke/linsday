@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title> Title of Your Site </title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cardo:200,400,700&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:300,700&amp;display=swap">
+    <link rel='stylesheet' href='css/main.css'>
+    <link rel="stylesheet" href="css/lib/bootstrap.css">
+    <link rel="stylesheet" href="css/hero.css">
+    
+    <script src="js/main.js"></script>
+    <script src="js/slider.js"></script>
+    <script src="js/hero.js" ></script>
+    <style>
+    
+    @import url("https://fonts.googleapis.com/css?family=Anton|Cinzel+Decorative|Julius+Sans+One|Merriweather|Monoton|Vidaloka&display=swap");
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-kerning: auto;
+  -webkit-text-size-adjust: 100%;
+}
+
+
+
+.content {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: calc(100vh - 13rem);
+  position: relative;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
+  pointer-events: none;
+}
+
+.wrapper-3d {
+    margin-top: 10vh;
+  position: relative;
+  perspective: 250px;
+  transform-style: preserve-3d;
+}
+
+.fold {
+  overflow: hidden;
+  width: 100vw;
+  height: 80vh;
+  will-change: transform;
+}
+
+.fold-before {
+  /* background: #dadada; */
+  position: absolute;
+  transform-origin: bottom center;
+  transform: translateZ(0px) translate3d(0, -80vh, 0) rotateX(-120deg)
+    scale3d(1, 1.002004008016032, 1);
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+.fold-center {
+  transform-origin: center center;
+  transform: translateZ(0px) translate3d(0, 0, 0) rotateX(0)
+    scale3d(1, 1.002004008016032, 1);
+}
+
+.fold-after {
+  /* background: #dadada; */
+  position: absolute;
+  transform-origin: top center;
+  transform: translateZ(0px) translate3d(0, 80vh, 0) rotateX(120deg)
+    scale3d(1, 1.002004008016032, 1);
+  right: 0;
+  left: 0;
+  top: 0;
+  bottom: 0;
+}
+
+.fold-size-fix {
+  transform-origin: center center;
+  transform: scaleY(0.998);
+}
+
+.fold-size-fix {
+  width: 100%;
+  height: 100%;
+}
+
+.fold-before .fold-size-fix {
+  transform-origin: bottom center;
+}
+
+.fold-after .fold-size-fix {
+  transform-origin: top center;
+}
+
+.fold-scroller {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+
+.fold-before .fold-scroller {
+  transform: translateY(100%);
+}
+
+.fold-after .fold-scroller {
+  transform: translateY(-100%);
+}
+
+.fold-content {
+  pointer-events: all;
+  width: 100%;
+  transition: transform 0.5s ease-out;
+}
+
+.content__line {
+  text-align: center;
+  margin: 1vh 0 2vh -5vw;
+  display: flex;
+  justify-content: center;
+  backface-visibility: hidden;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: -moz-none;
+  -o-user-select: none;
+  user-select: none;
+}
+
+.fold-content span {
+  margin-left: 15px;
+  font-size: 9vw;
+  line-height: 1;
+  white-space: nowrap;
+  text-transform: uppercase;
+  margin-right: 15px;
+}
+
+.family-1 {
+  font-family: "Merriweather", serif;
+}
+
+.family-2 {
+  font-family: "Anton", sans-serif;
+}
+
+.family-3 {
+  font-family: "Monoton", cursive;
+}
+
+.family-4 {
+  font-family: "Cinzel Decorative", cursive;
+}
+
+.family-5 {
+  font-family: "Julius Sans One", sans-serif;
+}
+
+.family-6 {
+  font-family: "Vidaloka", serif;
+}
+
+    </style>
+  </head>
+  <body>
+
+    <nav data-menu-index="01--desktop" class="menu menu--01--desktop js-menu">
+      <div class="menu__container">
+          <button type="button" class="menu__closer js-close-menu">close</button>
+          <div class="menu__box">
+              <h3 class="menu__title">menu</h3>
+              <ul class="menu__list">
+                  <li class="menu__item"><a href="#" class="menu__link">About</a></li>
+                  <li class="menu__item"><a href="#" class="menu__link">Team</a></li>
+                  <li class="menu__item"><a href="#" class="menu__link">Examples</a></li>
+                  <li class="menu__item"><a href="#" class="menu__link">Press</a></li>
+                  <li class="menu__item"><a href="#" class="menu__link">Contact</a></li>
+              </ul><a href="tel:1337 993 399" class="menu__phone_link">1337 993 399</a>
+              <h3 class="menu__title">about</h3>
+              <p class="menu__about_text">Never trap the scholar, for you cannot feel it. Nunquam fallere lactea. Break me fish, ye real jolly roger! Never trap the scholar, for you cannot feel it. Nunquam fallere lactea. Break me fish, ye real jolly roger!</p>
+          </div>
+      </div>
+  </nav>
+  <!-- == END OF DESKTOP MENU 01 (this menu is opened on burger tap: both in desktops and in mobiles) ==-->
+  <!-- == START OF MENU 01 (large desktop header--01 is hidden on mobiles (iPhone, iPad, etc) and this one is to be opened on burger tap) ==-->
+  <nav data-menu-index="01" class="menu menu--01 js-menu">
+      <div class="menu__container">
+          <button type="button" class="menu__closer js-close-menu">close</button>
+          <div class="menu__box">
+              <ul class="menu__list">
+                  <li class="menu__item"><a href="#" class="menu__link">About</a></li>
+                  <li class="menu__item"><a href="#" class="menu__link">Team</a></li>
+                  <li class="menu__item"><a href="#" class="menu__link">Examples</a></li>
+                  <li class="menu__item"><a href="#" class="menu__link">Press</a></li>
+                  <li class="menu__item"><a href="#" class="menu__link">Contact</a></li>
+              </ul>
+              <ul class="social">
+                  <li class="social__item social__item--left_margin">
+                      <a href="#" title="Say hello in Twitter!" class="social__link social__link--twitter"></a>
+                  </li>
+                  <li class="social__item social__item--left_margin">
+                      <a href="#" title="Say hello in Facebook!" class="social__link social__link--facebook"></a>
+                  </li>
+                  <li class="social__item social__item--left_margin">
+                      <a href="#" title="Say hello in G+!" class="social__link social__link--g_plus"></a>
+                  </li>
+              </ul>
+          </div>
+      </div>
+  </nav>
+  <!-- == END OF MENU 01 (large desktop header--01 is hidden on mobiles (iPhone, iPad, etc) and this one is to be opened on burger tap) ==-->
+  <!-- == START OF DESKTOP MENU 02 (this menu is opened on burger tap: both in desktops and in mobiles) ==-->
+  <nav data-menu-index="02--desktop" style="background-color: #242526" class="menu menu--02--desktop js-menu">
+      <!-- == START OF HEADER 17 ==-->
+      <nav class="header header--17">
+          <div class="container header__container">
+              <div class="header__left_box">
+                 <H1>Lindsay McEwen</H1>
+              <div class="header__right_box">
+                  <button type="button" class="header__burger_button js-close-menu state-opened"></button>
+              </div>
+          </div>
+      </nav>
+      <!-- == END OF HEADER 17 ==-->
+      <div class="menu__container--02--desktop">
+          <ul class="menu__list--02--desktop">
+              <li class="menu__item--02--desktop"><a href="#" class="menu__link--02--desktop">About</a></li>
+              <li class="menu__item--02--desktop"><a href="#" class="menu__link--02--desktop">Products</a></li>
+              <li class="menu__item--02--desktop"><a href="#" class="menu__link--02--desktop">Designers</a></li>
+              <li class="menu__item--02--desktop"><a href="#" class="menu__link--02--desktop">News</a></li>
+              <li class="menu__item--02--desktop"><a href="#" class="menu__link--02--desktop">Store</a></li>
+              <li class="menu__item--02--desktop"><a href="#" class="menu__link--02--desktop">Collections</a></li>
+              <li class="menu__item--02--desktop"><a href="#" class="menu__link--02--desktop">Contact</a></li>
+          </ul>
+      </div>
+      <div class="container menu__footer--02--desktop">
+          <div class="menu__footer menu__footer--02--desktop">
+              vogue
+              <div class="menu__footer_right_box--02--desktop">
+                  <ul class="social menu__footer_social--02--desktop">
+                      <li class="social__item social__item--left_margin">
+                          <a href="#" title="Say hello in Twitter!" class="social__link social__link--twitter"></a>
+                      </li>
+                      <li class="social__item social__item--left_margin">
+                          <a href="#" title="Say hello in Facebook!" class="social__link social__link--facebook"></a>
+                      </li>
+                      <li class="social__item social__item--left_margin">
+                          <a href="#" title="Say hello in G+!" class="social__link social__link--g_plus"></a>
+                      </li>
+                      <li class="social__item social__item--left_margin">
+                          <a href="#" title="Say hello in Tumblr!" class="social__link social__link--tumblr"></a>
+                      </li>
+                  </ul>
+              </div>
+          </div>
+      </div>
+  </nav>
+  <!-- == END OF DESKTOP MENU 02 (this menu is opened on burger tap: both in desktops and in mobiles) ==-->
+  <!-- == START OF MENU 03 (large desktop header--03 is hidden on mobiles (iPhone, iPad, etc) and this one is to be opened on burger tap) ==-->
+  <nav data-menu-index="03" class="menu menu--03 js-menu">
+      <div class="menu__container">
+          <button type="button" class="menu__closer js-close-menu">close</button>
+          <div class="menu__box">
+              <ul class="menu__list">
+                  <li class="menu__item"><a href="#" class="menu__link">About</a></li>
+                  <li class="menu__item"><a href="#" class="menu__link">Team</a></li>
+                  <li class="menu__item"><a href="#" class="menu__link">Examples</a></li>
+                  <li class="menu__item"><a href="#" class="menu__link">Press</a></li>
+                  <li class="menu__item"><a href="#" class="menu__link">Contact</a></li>
+              </ul><a href="#" class="button button--border-white">sign in</a></div>
+      </div>
+  </nav>
+  <!-- == END OF MENU 03 (large desktop header--03 is hidden on mobiles (iPhone, iPad, etc) and this one is to be opened on burger tap) ==-->
+  <!-- == START OF MENU 05 (large desktop header--05 is hidden on mobiles (iPhone, iPad, etc) and this one is to be opened on burger tap) ==-->
+  <nav data-menu-index="05" class="menu menu--05 js-menu">
+      <div class="menu__container">
+          <button type="button" class="menu__closer js-close-menu">close</button>
+          <div class="menu__box">
+              <ul class="menu__list">
+                  <li class="menu__item"><a href="#" class="menu__link">About</a></li>
+                  <li class="menu__item"><a href="#" class="menu__link">Team</a></li>
+                  <li class="menu__item"><a href="#" class="menu__link">Examples</a></li>
+                  <li class="menu__item"><a href="#" class="menu__link">Press</a></li>
+                  <li class="menu__item"><a href="#" class="menu__link">Contact</a></li>
+              </ul>
+          </div>
+      </div>
+  </nav>
+  <!-- == END OF MENU 05 (large desktop header--05 is hidden on mobiles (iPhone, iPad, etc) and this one is to be opened on burger tap) ==-->
+  <!-- == START OF MENU 06 (large desktop header--06 is hidden on mobiles (iPhone, iPad, etc) and this one is to be opened on burger tap) ==-->
+  <nav data-menu-index="06" class="menu menu--06 js-menu">
+      <div class="menu__container">
+          <button type="button" class="menu__closer js-close-menu">close</button>
+          <div class="menu__box">
+              <ul class="menu__list">
+                  <li class="menu__item"><a href="#" class="menu__link">About</a></li>
+                  <li class="menu__item"><a href="#" class="menu__link">Team</a></li>
+                  <li class="menu__item"><a href="#" class="menu__link">Examples</a></li>
+                  <li class="menu__item"><a href="#" class="menu__link">Press</a></li>
+                  <li class="menu__item"><a href="#" class="menu__link">Contact</a></li>
+              </ul>
+          </div>
+      </div>
+  </nav>
+  <!-- == END OF MENU 06 (large desktop header--06 is hidden on mobiles (iPhone, iPad, etc) and this one is to be opened on burger tap) ==-->
+  <!-- == START OF MENU 07 (large desktop header--07 is hidden on mobiles (iPhone, iPad, etc) and this one is to be opened on burger tap) ==-->
+  <nav data-menu-index="07" class="menu menu--07 js-menu">
+      <div class="menu__container">
+          <button type="button" class="menu__closer js-close-menu">close</button>
+          <div class="menu__box">
+              <ul class="menu__list">
+                  <li class="menu__item"><a href="#" class="menu__link">About</a></li>
+                  <li class="menu__item"><a href="#" class="menu__link">Team</a></li>
+                  <li class="menu__item"><a href="#" class="menu__link">Examples</a></li>
+                  <li class="menu__item"><a href="#" class="menu__link">Press</a></li>
+                  <li class="menu__item"><a href="#" class="menu__link">Contact</a></li>
+              </ul><a href="#" class="button button--white button--gray-shadow">sign up</a></div>
+      </div>
+  </nav>
+  <!-- == END OF MENU 07 (large desktop header--07 is hidden on mobiles (iPhone, iPad, etc) and this one is to be opened on burger tap) ==-->
+  <!-- == START OF MENU 08 (large desktop header--08 is hidden on mobiles (iPhone, iPad, etc) and this one is to be opened on burger tap) ==-->
+  <nav data-menu-index="08" class="menu menu--08 js-menu">
+      <div class="menu__container">
+          <button type="button" class="menu__closer js-close-menu">close</button>
+          <div class="menu__box">
+              <ul class="menu__list">
+                  <li class="menu__item"><a href="#" class="menu__link">About</a></li>
+                  <li class="menu__item"><a href="#" class="menu__link">Team</a></li>
+                  <li class="menu__item"><a href="#" class="menu__link">Examples</a></li>
+                  <li class="menu__item"><a href="#" class="menu__link">Press</a></li>
+                  <li class="menu__item"><a href="#" class="menu__link">Contact</a></li>
+              </ul><a href="#" class="header__link">sign up</a><a href="#" class="button button--small button--border-white button--border-fat">sign in</a></div>
+      </div>
+  </nav>
+  <!-- == END OF MENU 08 (large desktop header--08 is hidden on mobiles (iPhone, iPad, etc) and this one is to be opened on burger tap) ==-->
+  <!-- == START OF MENU 13 (large desktop header--13 is hidden on mobiles (iPhone, iPad, etc) and this one is to be opened on burger tap) ==-->
+  <nav data-menu-index="13" class="menu menu--13 js-menu">
+      <div class="menu__container">
+          <button type="button" class="menu__closer js-close-menu">close</button>
+          <div class="menu__box">
+              <ul class="menu__list">
+                  <li class="menu__item"><a href="#" class="menu__link">About</a></li>
+                  <li class="menu__item"><a href="#" class="menu__link">Team</a></li>
+                  <li class="menu__item"><a href="#" class="menu__link">Examples</a></li>
+                  <li class="menu__item"><a href="#" class="menu__link">Press</a></li>
+                  <li class="menu__item"><a href="#" class="menu__link">Contact</a></li>
+              </ul><a href="#" class="button button--border-white">sign in</a></div>
+      </div>
+  </nav>
+  <!-- == END OF MENU 13 (large desktop header--13 is hidden on mobiles (iPhone, iPad, etc) and this one is to be opened on burger tap) ==-->
+  <!-- == START OF MENU 14 (large desktop header--14 is hidden on mobiles (iPhone, iPad, etc) and this one is to be opened on burger tap) ==-->
+  <nav data-menu-index="14" class="menu menu--14 js-menu">
+      <div class="menu__container">
+          <button type="button" class="menu__closer js-close-menu">close</button>
+          <div class="menu__box">
+              <ul class="menu__list">
+                  <li class="menu__item"><a href="#" class="menu__link">About</a></li>
+                  <li class="menu__item"><a href="#" class="menu__link">Team</a></li>
+                  <li class="menu__item"><a href="#" class="menu__link">Examples</a></li>
+                  <li class="menu__item"><a href="#" class="menu__link">Press</a></li>
+                  <li class="menu__item"><a href="#" class="menu__link">Contact</a></li>
+              </ul><a href="#" class="button button--border-white">sign in</a></div>
+      </div>
+  </nav>
+  <!-- == END OF MENU 14 (large desktop header--14 is hidden on mobiles (iPhone, iPad, etc) and this one is to be opened on burger tap) ==-->
+  <!-- == END OF MENU COMPONENTS ==-->
+  <!-- ____________________________-->
+  <!-- == START OF COVER COMPONENTS ==-->
+  <!--include components/covers/01-->
+  <!--include components/covers/02-->
+  <!--include components/covers/03-->
+  <!--include components/covers/04-->
+  <!--include components/covers/05-->
+  <!--include components/covers/06-->
+  <!--include components/covers/07-->
+  <!--include components/covers/08-->
+  <!--include components/covers/09-->
+  <!--include components/covers/10-->
+  <!--include components/covers/11-->
+  <!--include components/covers/12-->
+  <!--include components/covers/13-->
+  <!--include components/covers/14-->
+  <!--include components/covers/15-->
+  <!--include components/covers/16-->
+  <!--include components/covers/17-->
+  <!--include components/covers/18-->
+  <!--include components/covers/19-->
+  <!--include components/covers/20-->
+  <!-- == START OF COVER 21 ==-->
+ 
+      <!-- == START OF HEADER 07 ==-->
+      <nav class="header header--07">
+          <div class="container header__container">
+              <div class="header__left_box">
+                <H1>Lindsay McEwen</H1>
+              </div>
+              <div class="header__center_box">
+                  <ul class="header__menu_list header__item--desktop">
+                      <li class="header__menu_item"><a href="#" class="header__menu_link">about</a></li>
+                      <li class="header__menu_item"><a href="#" class="header__menu_link">Services</a></li>
+                      <li class="header__menu_item"><a href="#" class="header__menu_link">Examples</a></li>
+                      <li class="header__menu_item"><a href="#" class="header__menu_link">blog</a></li>
+                      <li class="header__menu_item"><a href="#" class="header__menu_link">contact</a></li>
+                  </ul>
+              </div>
+              <div class="header__right_box"><a href="#" class="button button--white button--gray-shadow header__item--desktop">sign up</a>
+                  <button type="button" data-menu-index="07" class="header__burger_button header__burger_button--black js-open-menu header__item--mobile"></button>
+              </div>
+          </div>
+      </nav>
+      <!-- == END OF HEADER 07 ==-->
+      <div class="container">
+        <div class="content">
+            <div class="screen">
+              <div class="wrapper-3d">
+          
+                <div class="fold fold-before">
+                  <div class="fold-size-fix">
+                    <div class="fold-scroller">
+                      <div class="fold-content">
+                        <div class="content__line">
+                          <span class="family-1">Albania</span>
+                          <span class="family-2">Andorra</span>
+                          <span class="family-6">Argelia</span>
+                        </div>
+                        <div class="content__line">
+                          <span class="family-5">Austria</span>
+                          <span class="family-3">Australia</span>
+                          <span class="family-2">Bahamas</spanc>
+                        </div>
+                        <div class="content__line">
+                          <span class="family-6">Bielorrusia</span>
+                          <span class="family-1">Bulgaria</span>
+                          <span class="family-4">Brasil</span>
+                        </div>
+                        <div class="content__line">
+                          <span class="family-2">Canadá</span>
+                          <span class="family-4">Cuba</span>
+                          <span class="family-1">Ecuador</span>
+                        </div>
+                        <div class="content__line">
+                          <span class="family-6">Eslovaquia</span>
+                          <span class="family-3">Estonia</span>
+                          <span class="family-2">Francia</span>
+                        </div>
+                        <div class="content__line">
+                          <span class="family-5">Guyana</span>
+                          <span class="family-4">Dinamarca</span>
+                          <span class="family-1">Dinamarca</span>
+                        </div>
+                        <div class="content__line">
+                          <span class="family-2">Grecia</span>
+                          <span class="family-4">Kuwait</span>
+                          <span class="family-6">Letonia</span>
+                        </div>
+                        <div class="content__line">
+                          <span class="family-1">Irlanda</span>
+                          <span class="family-4">Indonesia</span>
+                          <span class="family-3">Japón</span>
+                        </div>
+                        <div class="content__line">
+                          <span class="family-4">Laos</span>
+                          <span class="family-5">Liberia</span>
+                          <span class="family-6">Malasia</span>
+                        </div>
+                        <div class="content__line">
+                          <span class="family-1">México</span>
+                          <span class="family-3">Moldavia</span>
+                          <span class="family-2">Rusia</span>
+                        </div>
+                        <div class="content__line">
+                          <span class="family-3">Líbano</span>
+                          <span class="family-4">Mongolia</span>
+                          <span class="family-2">Singapur</span>
+                        </div>
+                        <div class="content__line">
+                          <span class="family-1">China</span>
+                          <span class="family-4">Brunéi</span>
+                          <span class="family-2">Filipinas</span>
+                        </div>
+                        <div class="content__line">
+                          <span class="family-5">Vietnam</span>
+                          <span class="family-3">Alemania</span>
+                          <span class="family-1">Bélgica</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+          
+                <div class="fold fold-center">
+                  <div class="fold-size-fix">
+                    <div class="fold-scroller">
+                      <div class="fold-content">
+                        <div class="content__line">
+                          <span class="family-1">Albania</span>
+                          <span class="family-2">Andorra</span>
+                          <span class="family-6">Argelia</span>
+                        </div>
+                        <div class="content__line">
+                          <span class="family-5">Austria</span>
+                          <span class="family-3">Australia</span>
+                          <span class="family-2">Bahamas</spanc>
+                        </div>
+                        <div class="content__line">
+                          <span class="family-6">Bielorrusia</span>
+                          <span class="family-1">Bulgaria</span>
+                          <span class="family-4">Brasil</span>
+                        </div>
+                        <div class="content__line">
+                          <span class="family-2">Canadá</span>
+                          <span class="family-4">Cuba</span>
+                          <span class="family-1">Ecuador</span>
+                        </div>
+                        <div class="content__line">
+                          <span class="family-6">Eslovaquia</span>
+                          <span class="family-3">Estonia</span>
+                          <span class="family-2">Francia</span>
+                        </div>
+                        <div class="content__line">
+                          <span class="family-5">Guyana</span>
+                          <span class="family-4">Dinamarca</span>
+                          <span class="family-1">Dinamarca</span>
+                        </div>
+                        <div class="content__line">
+                          <span class="family-2">Grecia</span>
+                          <span class="family-4">Kuwait</span>
+                          <span class="family-6">Letonia</span>
+                        </div>
+                        <div class="content__line">
+                          <span class="family-1">Irlanda</span>
+                          <span class="family-4">Indonesia</span>
+                          <span class="family-3">Japón</span>
+                        </div>
+                        <div class="content__line">
+                          <span class="family-4">Laos</span>
+                          <span class="family-5">Liberia</span>
+                          <span class="family-6">Malasia</span>
+                        </div>
+                        <div class="content__line">
+                          <span class="family-1">México</span>
+                          <span class="family-3">Moldavia</span>
+                          <span class="family-2">Rusia</span>
+                        </div>
+                                      <div class="content__line">
+                          <span class="family-3">Líbano</span>
+                          <span class="family-4">Mongolia</span>
+                          <span class="family-2">Singapur</span>
+                        </div>
+                        <div class="content__line">
+                          <span class="family-1">China</span>
+                          <span class="family-4">Brunéi</span>
+                          <span class="family-2">Filipinas</span>
+                        </div>
+                        <div class="content__line">
+                          <span class="family-5">Vietnam</span>
+                          <span class="family-3">Alemania</span>
+                          <span class="family-1">Bélgica</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+          
+                <div class="fold fold-after">
+                  <div class="fold-size-fix">
+                    <div class="fold-scroller">
+                      <div class="fold-content">
+                        <div class="content__line">
+                          <span class="family-1">Albania</span>
+                          <span class="family-2">Andorra</span>
+                          <span class="family-6">Argelia</span>
+                        </div>
+                        <div class="content__line">
+                          <span class="family-5">Austria</span>
+                          <span class="family-3">Australia</span>
+                          <span class="family-2">Bahamas</spanc>
+                        </div>
+                        <div class="content__line">
+                          <span class="family-6">Bielorrusia</span>
+                          <span class="family-1">Bulgaria</span>
+                          <span class="family-4">Brasil</span>
+                        </div>
+                        <div class="content__line">
+                          <span class="family-2">Canadá</span>
+                          <span class="family-4">Cuba</span>
+                          <span class="family-1">Ecuador</span>
+                        </div>
+                        <div class="content__line">
+                          <span class="family-6">Eslovaquia</span>
+                          <span class="family-3">Estonia</span>
+                          <span class="family-2">Francia</span>
+                        </div>
+                        <div class="content__line">
+                          <span class="family-5">Guyana</span>
+                          <span class="family-4">Dinamarca</span>
+                          <span class="family-1">Dinamarca</span>
+                        </div>
+                        <div class="content__line">
+                          <span class="family-2">Grecia</span>
+                          <span class="family-4">Kuwait</span>
+                          <span class="family-6">Letonia</span>
+                        </div>
+                        <div class="content__line">
+                          <span class="family-1">Irlanda</span>
+                          <span class="family-4">Indonesia</span>
+                          <span class="family-3">Japón</span>
+                        </div>
+                        <div class="content__line">
+                          <span class="family-4">Laos</span>
+                          <span class="family-5">Liberia</span>
+                          <span class="family-6">Malasia</span>
+                        </div>
+                        <div class="content__line">
+                          <span class="family-1">México</span>
+                          <span class="family-3">Moldavia</span>
+                          <span class="family-2">Rusia</span>
+                        </div>
+                                      <div class="content__line">
+                          <span class="family-3">Líbano</span>
+                          <span class="family-4">Mongolia</span>
+                          <span class="family-2">Singapur</span>
+                        </div>
+                        <div class="content__line">
+                          <span class="family-1">China</span>
+                          <span class="family-4">Brunéi</span>
+                          <span class="family-2">Filipinas</span>
+                        </div>
+                        <div class="content__line">
+                          <span class="family-5">Vietnam</span>
+                          <span class="family-3">Alemania</span>
+                          <span class="family-1">Bélgica</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+          
+              </div>
+            </div>
+          </div>
+      </div>
+  </div>
+
+  
+
+    <main style="background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%) !important;margin-top: 10vh;">
+      <div class="container container_w-100p">
+        <div class="row row_ai-center">
+          <div class="col-xl-5 col-md-12 col-sm-12">
+            
+            <h1 class="heading heading_active">
+              Start Innovations With Me
+            </h1>
+            <h4>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius fuga recusandae repellendus ipsam, culpa aliquid id sed nihil veniam necessitatibus?</h4>
+            <!-- FORM FOR EMAILS. Change link in "action" attribute -->
+            <!--  Zapier: https://hooks.zapier.com/hooks/catch/6252453/o6w75am/silent? -->
+            <!--  Mailchimp: https://itmeo.us13.list-manage.com/subscribe/post?u=c753049c0b6c0ccd061d10786&amp;id=8364e5b022 -->
+            <div class="form form_active" id="mc_embed_signup">
+              <form class="js-form validate" action="https://itmeo.us13.list-manage.com/subscribe/post?u=c753049c0b6c0ccd061d10786&amp;id=8364e5b022" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank">
+                <div class="form__input">
+                  <input type="email" name="EMAIL" id="mce-EMAIL" placeholder="Email me when it’s ready" required>
+                </div>
+                <button class="form__submit" type="submit" name="subscribe" id="mc-embedded-subscribe">
+                  <span class="form__submit_text"></span>
+                  <span class="form__submit_spinner">
+                    <span class="spinner"></span>
+                  </span>
+                </button>
+                <div class="form__info form__info_hide">
+                  Your email was sent successfully.
+                </div>
+              </form>
+            </div>
+          </div>
+          <div class="col-xl-6 offset-xl-1 col-md-12 col-sm-12">
+            <div class="picture picture_active">
+              <div class="picture-play"></div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <div class="triggers triggers_active">
+              <div class="trigger">
+                <div class="trigger__title">Simple Control</div>
+                <div class="trigger__description">
+                  You get to define exercises, combine them to form workouts, and schedule those to make routines
+                </div>
+              </div>
+              <div class="trigger">
+                <div class="trigger__title">Exercise Details</div>
+                <div class="trigger__description">
+                  Check exercise details, read description and watch the instructional video if you are stuck with unfamiliar exercise
+                </div>
+              </div>
+              <div class="trigger">
+                <div class="trigger__title">Detailed specifications</div>
+                <div class="trigger__description">
+                  An expansion lets you track bodily measurements including weight and body fat percentage
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+       <div style="margin-top: 15vh;">
+        <svg xmlns="http://www.w3.org/2000/svg" class="process js-animate" width="960" height="120" viewBox="0 0 960 120">
+            <g opacity="0.8">
+                <polygon class="design" fill="#F57A73" points="0,120 144,101 298,36 355,43 403,25 480,72 780,120"/>
+                <polygon class="discover" fill="#50B1AA" points="0,120 67,47 144,75 261,79 297,107 469,120"/>
+                <polygon class="implement" fill="#FFB566" points="345,120 385,105 508,29 558,68 614,88 692,89 835,120"/>
+                <polygon class="deliver" fill="#60666A" points="577,120 788,29 898,60 960,120"/>
+                <polygon class="develop" fill="#43C0E6" points="393,120 538,85 624,14 681,25 788,87 922,120"/>
+            </g>
+        </svg>
+        <div class="process-details">
+            <div class="discover">
+                <div class="heading">DISCOVER</div>
+                <p>Develop a thorough understanding of the project, audience, and objectives to formulate a digital strategy.</p>
+            </div>
+            <div class="design">
+                <div class="heading">DESIGN</div>
+                <p>Craft a purposeful design to reflect the objectives and indicate the direction for the entire project.</p>
+            </div>
+            <div class="implement">
+                <div class="heading">IMPLEMENT</div>
+                <p>Bring the design to life in the form of an interactive and functional prototype. Review, refine and optimise.</p>
+            </div>
+            <div class="develop">
+                <div class="heading">DEVELOP</div>
+                <p>Incorporate implementation and technical components into a highly functional system, ready for review.</p>
+            </div>
+            <div class="deliver">
+                <div class="heading">DELIVER</div>
+                <p>Review, refine, test and prepare final product for delivery. Launch and continue to evolve over time.</p>
+            </div>
+        </div>
+    </div>
+      <div class="js-overlay js-close-navigation js-close-menu overlay"></div>
+      </div>
+    </main>
+ 
+
+    <div class="popup">
+      <div class="popup-content">
+        <iframe src="https://player.vimeo.com/video/300616218" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+      </div>
+    </div>
+
+    <footer class="new_footer_area " style="    background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%) !important;">
+        <div class="new_footer_top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3 col-md-6">
+                        <div class="f_widget company_widget wow fadeInLeft" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInLeft;">
+                            <h3 class="f-title f_600 t_color f_size_18">Get in Touch</h3>
+                            <p>Don’t miss any updates of our new templates and extensions.!</p>
+                            <form action="#" class="f_subscribe_two mailchimp" method="post" novalidate="true" _lpchecked="1">
+                                <input type="text" name="EMAIL" class="form-control memail" placeholder="Email">
+                                <button class="btn btn_get btn_get_two" type="submit">Subscribe</button>
+                                <p class="mchimp-errmessage" style="display: none;"></p>
+                                <p class="mchimp-sucmessage" style="display: none;"></p>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="f_widget about-widget pl_70 wow fadeInLeft" data-wow-delay="0.4s" style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInLeft;">
+                            <h3 class="f-title f_600 t_color f_size_18">Download</h3>
+                            <ul class="list-unstyled f_list">
+                                
+                                <li><a href="#">Projects</a></li>
+                                <li><a href="#">My tasks</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="f_widget about-widget pl_70 wow fadeInLeft" data-wow-delay="0.6s" style="visibility: visible; animation-delay: 0.6s; animation-name: fadeInLeft;">
+                            <h3 class="f-title f_600 t_color f_size_18">Help</h3>
+                            <ul class="list-unstyled f_list">
+                                <li><a href="#">FAQ</a></li>
+                            
+                                <li><a href="#">Privacy</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="footer_bg">
+                <div class="footer_bg_one"></div>
+                <div class="footer_bg_two"></div>
+            </div>
+        </div>
+        <div class="footer_bottom">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6 col-sm-7">
+                        <p class="mb-0 f_400">© Lindsay McEwen Inc.. 2020 All rights reserved.</p>
+                    </div>
+                    <div class="col-lg-6 col-sm-5 text-right">
+                        <p>Made  <i class="icon_heart"></i> by <a href="#">Manu Occultum</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    
+    console.clear();
+
+var processGraphs = document.querySelectorAll('.process polygon');
+var processDetails = document.querySelectorAll('.process-details > div');
+var processGraphMouseover = function (event) {
+	for (var pg = 0, pgl = processGraphs.length; pg < pgl; pg++) {
+		if (processGraphs[pg] === event.target && event.type === 'mouseover') {
+			processGraphs[pg].style.opacity = 1;
+		} else {
+			processGraphs[pg].style.opacity = 0.5;
+		}
+	}
+	for (pd = 0, pdl = processDetails.length; pd < pdl; pd++) {
+		if (processDetails[pd].classList.contains(event.target.getAttribute('class')) && event.type === 'mouseover') {
+			processDetails[pd].style.opacity = 1;
+		} else {
+			processDetails[pd].style.opacity = 0.5;
+		}
+	}
+};
+var processGraphMouseout = function (event) {
+	for (var pg = 0, pgl = processGraphs.length; pg < pgl; pg++) {
+		processGraphs[pg].removeAttribute('style');
+	}
+	for (pd = 0, pdl = processDetails.length; pd < pdl; pd++) {
+		processDetails[pd].removeAttribute('style');
+	}
+};
+for (var pg = 0, pgl = processGraphs.length; pg < pgl; pg++) {
+	processGraphs[pg].addEventListener('mouseover', processGraphMouseover);
+	processGraphs[pg].addEventListener('mouseout', processGraphMouseout);
+}
+    
+    </script>
+
+    
+
+    <script>
+    
+
+const init = () => {
+const scroller = document.querySelectorAll(".fold-scroller");
+const length = scroller.length;
+const height = scroller[0].offsetHeight * length;
+
+document.body.style.height = height + "px";
+
+const onScroll = item => {
+  const { scrollY: sy } = window;
+  const percent = sy / (document.body.scrollHeight - innerHeight );
+
+  item.children[0].style.transform = `translate3d(0, -${percent * 100}%, 0)`;
+};
+
+scroller.forEach(item => {
+  window.addEventListener("scroll", () => onScroll(item));
+});  
+}
+
+window.addEventListener('load', init)
+    </script>
+  </body>
+</html>
